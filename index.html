@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Downloads</title>
+    <style>
+	body 
+	{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+	.container 
+	{
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 350px;
+        }
+	h2 { margin-top: 0; color: #00ff88; }
+	input[type="password"] 
+	{
+            width: 80%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+	button 
+	{
+            background-color: #00ff88;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+	button:hover { transform: scale(1.05); }
+	#secret-vault 
+	{
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+	.link-list 
+	{
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+	link-list li 
+	{
+            margin: 15px 0;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+        .link-list a 
+	{
+            color: #00ccff;
+            text-decoration: none;
+        }
+	.link-list a:hover { text-decoration: underline; }
+        @keyframes fadeIn 
+	{
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+	<div id="login-form">
+	    <h2>Enter Password</h2>
+	    <input type="password" id="passwordInput" placeholder="Password">
+	    <br>
+	    <button onclick="checkPassword()>Unlock</button>
+	    <p id="error-msg" style="color: #ff4444; font-size: 0.8rem; margin-top: 10px;"></p>
+	</div>
+	<div id="secret-vault">
+	    <h2>Private Area</h2>
+	    <p>Access granted. Click to download:</p>
+	    <ul class="link-list">
+		<li>Free Robux Generator<a href="D:\FreeRobuxGen.zip" download></a></li>
+		<li>WinRAR password cracker<a href="D:\WinRARcracker.zip" download></a></li>
+		<li>Cpu Booster<a href="D:\CpuBooster.zip" download></a></li>
+	    </ul>
+	    <button onclick="location.reload()" style="background: #444; color: white; margin-top: 10px;">Lock Again</button>
+	</div>
+    </div>
+    <script>
+	function checkPassword()
+	{
+	    const pass = document.getElementById('passwordInput').value;
+            const vault = document.getElementById('secret-vault');
+            const login = document.getElementById('login-form');
+            const error = document.getElementById('error-msg');
+	    if (pass === "doncastillio-70") 
+	    {
+                login.style.display = "none";
+                vault.style.display = "block";
+            } 
+	    else 
+	    {
+                error.innerText = "Incorrect password.";
+            }
+        }
+	document.getElementById('passwordInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
